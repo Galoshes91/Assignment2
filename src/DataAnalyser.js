@@ -1,6 +1,7 @@
 import airports from '../A2_Airports.json';
 import flights from '../A2_Flights.json';
 import {Airport} from "./Models/Airport";
+import { Airlines } from './Models/Airlines';
 
 export class DataAnalyser {
     airportsData;
@@ -23,6 +24,17 @@ export class DataAnalyser {
 
             //then create the new instance of the class to be added to airports
             this.airports.push(new Airport(airport));
+        });
+
+        const temp = [];
+
+        // push unique airline ID values to the temp array for tracking purposes,
+        // then add the new (unique) airline to the Airlines collection
+        this.flightsData.forEach(fd => {
+            if(!temp.includes(fd.airline)) {
+                temp.push(fd.airline);
+                Airlines.AddAirline(fd);
+            }
         });
     }
 

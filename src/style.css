@@ -1,8 +1,100 @@
 html {
   color-scheme: light dark;
   font-family: system-ui;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
+}
+
+hr {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Define color variables for light and dark modes */
+:root {
+  --bg-color-light: #ffffff;
+  --bg-color-dark: #1e1e1e;
+  --text-color-light: #333333;
+  --text-color-dark: #ffffff;
+  --header-bg-light: #4CAF50;
+  --header-bg-dark: #333333;
+  --row-hover-light: #ddd;
+  --row-hover-dark: #444444;
+  --border-color-light: #ddd;
+  --border-color-dark: #555555;
+  --alt-row-color-light: #f2f2f2;
+  --alt-row-color-dark: #2a2a2a;
+}
+
+/* Global table styles */
+table {
+  width: 75%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color-light); /* Default to light background */
+  color: var(--text-color-light); /* Default text color */
+  border: 1px solid var(--border-color-light); /* Default border color */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr.table-header > td {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+/* Table headers */
+th {
+  background-color: var(--header-bg-light);
+  color: var(--text-color-light);
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 16px;
+}
+
+/* Table data cells */
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid var(--border-color-light);
+  font-size: 14px;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+  background-color: var(--alt-row-color-light);
+}
+
+/* Row hover effect */
+tr:hover {
+  background-color: var(--row-hover-light);
+}
+
+/* Dark Mode Styling */
+@media (prefers-color-scheme: dark) {
+  table {
+      background-color: var(--bg-color-dark);
+      color: var(--text-color-dark);
+      border: 1px solid var(--border-color-dark);
+  }
+
+  th {
+      background-color: var(--header-bg-dark);
+      color: var(--text-color-dark);
+  }
+
+  td {
+      border: 1px solid var(--border-color-dark);
+  }
+
+  tr:nth-child(even) {
+      background-color: var(--alt-row-color-dark);
+  }
+
+  tr:hover {
+      background-color: var(--row-hover-dark);
+  }
 }

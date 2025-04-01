@@ -7,6 +7,10 @@ export class Airlines {
         // return airline
     }
 
+    static GetAllAirlines() {
+        return this.AirlineCollection;
+    }
+
     static AddAirline(airline) {
         const al = new Airline(airline);
         this.AirlineCollection.push(al);
