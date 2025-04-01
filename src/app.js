@@ -1,9 +1,7 @@
-import airports from '../A2_Airports.json';
-import flights from '../A2_Flights.json';
+import {DataAnalyser} from "./DataAnalyser";
 
-function parseData() {
-    console.log(airports);
-    console.log(flights);
-}
+const dataAnalyser = new DataAnalyser();
 
-parseData();
+//console.log(dataAnalyser.getFlights());
+console.log(dataAnalyser.getAirports());
+
