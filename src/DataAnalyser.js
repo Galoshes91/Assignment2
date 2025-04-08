@@ -87,4 +87,18 @@ export class DataAnalyser {
         });
     }
     //#endregion
+
+    getAirportTimeDiff(airport_a, airport_b) {
+        const a_longtitude = airport_a.longitude;
+        const b_longtitude = airport_b.longitude;
+
+        const decimalTime = (Math.abs(a_longtitude - b_longtitude)) / 15;
+        var dateObj = new Date(0,0);
+        dateObj.setSeconds(+decimalTime * 60 * 60);
+
+        const hrs = dateObj.getHours();
+        const mins = dateObj.getMinutes();
+
+        return `Time diff:\n   Hours: ${hrs}\n   Minutes: ${mins}`
+    }
 }

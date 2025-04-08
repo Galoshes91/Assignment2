@@ -5,6 +5,9 @@ const dataAnalyser = new DataAnalyser();
 /* Mapper function */
 dataAnalyser.getAirports()[1].updateFlights(true, true, "city", "Sydney");
 
+/* Display all airports in dataset */
+console.log(dataAnalyser.getAirports());
+
 /* Display all flights in dataset */
 console.log(dataAnalyser.getFlights());
 
@@ -29,6 +32,8 @@ console.log(dataAnalyser.getByCodeshare(false));
 console.log(dataAnalyser.getByAircraftType("Airbus A320-100"));
 console.log(dataAnalyser.getByAircraftType("Fokker 100"));
 
+/* get time diff between two airports */
+console.log(dataAnalyser.getAirportTimeDiff(dataAnalyser.getAirports()[331], dataAnalyser.getAirports()[311]))
 
 let table = document.createElement("table");
 
