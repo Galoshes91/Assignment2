@@ -45,4 +45,46 @@ export class DataAnalyser {
     getAirports() {
         return this.airports;
     }
+    
+    getByAirportCriteria(property, value) {
+        const returnArr = this.getAirports().filter(airport => {
+            return airport[property] === value;
+        });
+
+        return returnArr;
+    }
+
+    //#region Flight search functions
+    getByFlightCriteria(property, value) {
+        const returnArr = this.getFlights().filter(flight => {
+            return flight[property] === value;
+        });
+
+        return returnArr;
+    }
+
+    getByDestinationAirport(value) {
+        return this.getByFlightCriteria("destination_airport", value);
+    }
+
+    getBySourceAirport(value) {
+        return this.getByFlightCriteria("source_airport", value);
+    }
+
+    getByAirline(value) {
+        return this.getByFlightCriteria("airline", value);
+    }
+
+    getByCodeshare(value) {
+        return this.getByFlightCriteria("codeshare", value)
+    }
+    
+    getByAircraftType(value) {
+        return this.getFlights().filter(flight => {
+            return flight.aircraft.filter(ac => {
+                return ac === value;
+            }).length;
+        });
+    }
+    //#endregion
 }

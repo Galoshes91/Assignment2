@@ -59,4 +59,22 @@ export class Airport {
 
         return tr;
     }
+
+    updateFlights(incoming, outgoing, property, newVal) {
+        if(incoming) {
+            this.incomingFlights.map(incomingFlight => {
+                incomingFlight[property] = newVal;
+                // set lastUpdated to the current time so we know what time it was last updated
+                incomingFlight.lastUpdated = new Date();
+            });
+        }
+
+        if(outgoing) {
+            this.outgoingFlights.map(outgoingFlight => {
+                outgoingFlight[property] = newVal;
+                // set lastUpdated to the current time so we know what time it was last updated
+                outgoingFlight.lastUpdated = new Date();
+            });
+        }
+    }
 }
