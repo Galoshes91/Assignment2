@@ -12,6 +12,11 @@ h1 {
   text-align: center;
 }
 
+.error-text {
+  color: red;
+  font-weight: bold;
+}
+
 /* Define color variables for light and dark modes */
 :root {
   --bg-color-light: #ffffff;
