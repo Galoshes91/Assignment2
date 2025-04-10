@@ -17,6 +17,11 @@ h1, h3 {
   font-weight: bold;
 }
 
+.topten-button {
+  height: 50px;
+  width: 15%;
+}
+
 /* Define color variables for light and dark modes */
 :root {
   --bg-color-light: #ffffff;

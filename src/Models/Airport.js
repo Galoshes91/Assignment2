@@ -31,13 +31,7 @@ export class Airport {
 	 */
 	formatAirportHTML() {
 		const tr = document.createElement("tr");
-
-		// TODO: fix this utter mess up
 		const txtArr = [];
-
-		// TODO: turn this into a html link, this link will go to another page which will
-		// further outline the incoming/outgoing flights in more detail. This is to avoid
-		// cluttering up the table cells
 		txtArr.push(
 			this.incomingFlights.length ? this.incomingFlights.length : "N/A"
 		);

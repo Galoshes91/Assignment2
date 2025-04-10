@@ -101,4 +101,35 @@ export class DataAnalyser {
 
 		return `Time diff:\n   Hours: ${hrs}\n   Minutes: ${mins}`;
 	}
+
+    getBusiestRoutes() {
+        const flights = this.getFlights();
+
+        const flightPairs = [];
+        let existingPair = "";
+        flights.forEach((flight) => {
+            const exists = !!flightPairs.find(fp => {
+                const matchA = fp.id === `${flight.source_airport} ${flight.destination_airport}`;
+                const matchB = fp.id === `${flight.destination_airport} ${flight.source_airport}`;
+
+                existingPair = matchA ? `${flight.source_airport} ${flight.destination_airport}` : `${flight.destination_airport} ${flight.source_airport}`;
+                return matchA || matchB;
+            });
+
+            if(exists) {
+                flightPairs.find(fp => fp.id === existingPair).count++;
+            } else {
+                flightPairs.push({
+                    id: `${flight.source_airport} ${flight.destination_airport}`,
+                    count: 1
+                });
+            }
+        });
+
+        flightPairs.sort((a, b) => {
+            return b.count - a.count;
+        });
+
+        return flightPairs.slice(0, 10);
+    }
 }
