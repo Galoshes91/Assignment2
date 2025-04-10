@@ -156,7 +156,7 @@ export class DataAnalyser {
             }
         }
 
-        // need to sort, etc
+        // TODO: need to sort, etc
         console.log(this.getAirports())
         console.log(timezoneDiff)
     }
