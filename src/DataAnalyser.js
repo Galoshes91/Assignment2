@@ -146,18 +146,47 @@ export class DataAnalyser {
 
         for(let i = 0; i < airports.length; i++) {
             for(let j = 0; j < airports.length; j++) {
+				const apA = airports[i].iata ?? `${airports[i].city}, ${airports[i].country}`;
+				const apB = airports[j].iata ?? `${airports[j].city}, ${airports[j].country}`;
+
                 if(i !== j) {
                     timezoneDiff.push({
-                        airportA: airports[i].iata ?? `${airports[i].city}, ${airports[i].country}`, 
-                        airportB: airports[j].iata ?? `${airports[j].city}, ${airports[j].country}`,
+                        airportA: apA,
+                        airportB: apB,
                         timeDiff: this.getAirportTimeDiff(airports[i], airports[j], false)
                     });
                 }
             }
         }
 
-        // TODO: need to sort, etc
-        console.log(this.getAirports())
-        console.log(timezoneDiff)
+        timezoneDiff.sort((a, b) => {
+			const mins = b.timeDiff.mins - a.timeDiff.mins;
+			return mins;
+		});
+
+		timezoneDiff.sort((a, b) => {
+			const hrs = b.timeDiff.hrs - a.timeDiff.hrs;
+			return hrs;
+		});
+		
+		// we want to get rid of duplicates but also dont need to go through the whole 6 figure size array. 
+		// make a new array that will stop adding things at 10, making sure to skip duplicates now that the array has been sorted
+		const finalArr = [];
+		let index = 0;
+		while(finalArr.length < 10) {
+			const currentVal = timezoneDiff[index];
+
+			const exists = finalArr.find((ele) => {
+				return ele.airportA === currentVal.airportB && ele.airportB === currentVal.airportA;
+			});
+
+			if(!exists) {
+				finalArr.push(timezoneDiff[index]);
+			}
+			index++;
+
+		}
+
+		return finalArr;
     }
 }
