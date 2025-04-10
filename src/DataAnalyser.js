@@ -88,7 +88,7 @@ export class DataAnalyser {
 	}
 	//#endregion
 
-	getAirportTimeDiff(airport_a, airport_b) {
+	getAirportTimeDiff(airport_a, airport_b, asStr) {
 		const a_longtitude = airport_a.longitude;
 		const b_longtitude = airport_b.longitude;
 
@@ -99,7 +99,14 @@ export class DataAnalyser {
 		const hrs = dateObj.getHours();
 		const mins = dateObj.getMinutes();
 
-		return `Time diff:\n   Hours: ${hrs}\n   Minutes: ${mins}`;
+        if(asStr) {
+            return `Time diff:\n   Hours: ${hrs}\n   Minutes: ${mins}`;
+        } else {
+            return {
+                hrs: hrs,
+                mins: mins
+            }
+        }
 	}
 
     getBusiestRoutes() {
@@ -131,5 +138,26 @@ export class DataAnalyser {
         });
 
         return flightPairs.slice(0, 10);
+    }
+    
+    getBiggestTimezoneDiff() {
+        const airports = this.getAirports();
+        const timezoneDiff = [];
+
+        for(let i = 0; i < airports.length; i++) {
+            for(let j = 0; j < airports.length; j++) {
+                if(i !== j) {
+                    timezoneDiff.push({
+                        airportA: airports[i].iata ?? `${airports[i].city}, ${airports[i].country}`, 
+                        airportB: airports[j].iata ?? `${airports[j].city}, ${airports[j].country}`,
+                        timeDiff: this.getAirportTimeDiff(airports[i], airports[j], false)
+                    });
+                }
+            }
+        }
+
+        // need to sort, etc
+        console.log(this.getAirports())
+        console.log(timezoneDiff)
     }
 }

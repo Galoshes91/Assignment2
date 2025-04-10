@@ -68,7 +68,10 @@ function getTopFlightNum() {
 	createTable(airportArr);
 }
 
-function getTopTimeDiff() {}
+function getTopTimeDiff() {
+    const airports = dataAnalyser.getBiggestTimezoneDiff();
+
+}
 
 document.getElementById("flightNum").onclick = () => getTopFlightNum();
 document.getElementById("timeDiff").onclick = () => getTopTimeDiff();

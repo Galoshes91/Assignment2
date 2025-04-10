@@ -101,7 +101,8 @@ console.log(dataAnalyser.getByAircraftType("Fokker 100"));
 console.log(
 	dataAnalyser.getAirportTimeDiff(
 		dataAnalyser.getAirports()[331],
-		dataAnalyser.getAirports()[311]
+		dataAnalyser.getAirports()[311],
+        true
 	)
 );
 
