@@ -1,6 +1,8 @@
 import { DataAnalyser } from "./DataAnalyser";
 
 function setAirportTableHeaders() {
+    const trh = document.createElement("tr");
+    trh.classList.add("table-header");
 	const txtArr = [];
 
 	txtArr.push("Incoming flights");
@@ -106,8 +108,7 @@ console.log(
 let table = document.createElement("table");
 
 //#region Header columns
-const trh = document.createElement("tr");
-trh.classList.add("table-header");
+
 table.setAttribute("id", "airportTable");
 
 setAirportTableHeaders();
@@ -148,4 +149,17 @@ function searchAirports() {
 	}
 }
 
+function clearAirports() {
+    const airportTable = document.getElementById("airportTable");
+    airportTable.innerHTML = "";
+    setAirportTableHeaders();
+    dataAnalyser.getAirports().forEach((airport) => {
+        table.appendChild(airport.formatAirportHTML());
+    });
+
+    document.getElementById("airportProperty").value = "";
+    document.getElementById("searchVal").value = "";
+}
+
 document.getElementById("searchButton").onclick = () => searchAirports();
+document.getElementById("clearButton").onclick = () => clearAirports();
