@@ -3,10 +3,6 @@ import { Airline } from "./Airline";
 export class Airlines {
 	static AirlineCollection = [];
 
-	static GetAirline(airlineName) {
-		// return airline
-	}
-
 	static GetAllAirlines() {
 		return this.AirlineCollection;
 	}

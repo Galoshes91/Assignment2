@@ -13,7 +13,6 @@ export class Airport {
 	constructor(airport) {
 		this.incomingFlights = airport.incomingFlights;
 		this.outgoingFlights = airport.outgoingFlights;
-
 		this.altitude = airport.altitude;
 		this.city = airport.city;
 		this.country = airport.country;
