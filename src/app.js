@@ -151,6 +151,9 @@ function searchAirports() {
 }
 
 function clearAirports() {
+	// reset error field
+	const errorTxt = document.getElementById("error");
+	errorTxt.innerText = "";
     const airportTable = document.getElementById("airportTable");
     airportTable.innerHTML = "";
     setAirportTableHeaders();
